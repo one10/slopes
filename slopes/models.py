@@ -11,6 +11,9 @@ class Slope(DateModel):
     name: models.CharField = models.CharField(
         max_length=MEDIUM_STR_SIZE, null=False, blank=False
     )
+    description: models.CharField = models.CharField(
+        max_length=LARGE_STR_SIZE, null=False, blank=False
+    )
 
     def __str__(self) -> str:
         return "Slope: {}".format(self.name)
@@ -35,6 +38,7 @@ class SlopeUpdate(DateModel):
         to="Slope",
         on_delete=models.CASCADE,
         null=False,
+        related_name="updates",
     )
     effective_date = models.DateTimeField(null=False, blank=False)
     # this is mostly for where this update came from: hypothetical based on before, resort itself, etc.

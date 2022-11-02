@@ -6,6 +6,7 @@ from django.utils import timezone
 
 from slopes.models import (Slope, SlopeUpdate, SlopeUpdateStatus,
                            SlopeUpdateType)
+from slopes.utils_standalone import slope_name_to_url_str
 
 client = django.test.Client()
 
@@ -17,10 +18,12 @@ class BasicTests(TestCase):
         response_body_str = response.content.decode("utf-8")
         self.assertGreater(len(response_body_str), 1)
 
-        slope1 = Slope(name="brr1")
+        slope1 = Slope(name="Brr1")
         slope1.save()
         slope1.refresh_from_db()
-        response = client.get(reverse("get_slope", args=[slope1.pk]))
+        response = client.get(
+            reverse("get_slope", args=[slope_name_to_url_str(slope1.name)])
+        )
         self.assertEqual(response.status_code, 200)
         response_body_str = response.content.decode("utf-8")
         self.assertGreater(len(response_body_str), 1)
