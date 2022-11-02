@@ -7,3 +7,7 @@
 `python3 manage.py runserver --settings=slopes_config.settings_local`
 
 `python3 manage.py test --settings=slopes_config.settings_testing`
+
+`python3 manage.py makemigrations --settings=slopes_config.settings_local`
+
+`python3 manage.py migrate --settings=slopes_config.settings_local`
