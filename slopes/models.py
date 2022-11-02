@@ -12,6 +12,9 @@ class Slope(DateModel, models.Model):
         max_length=MEDIUM_STR_SIZE, null=False, blank=False
     )
 
+    def __str__(self) -> str:
+        return "Slope: {}".format(self.name)
+
 
 # updates can be:
 # * about opening
@@ -46,3 +49,13 @@ class SlopeUpdate(DateModel, models.Model):
         on_delete=models.CASCADE,
         null=False,
     )
+    # this is mostly for where this update came from: hypothetical based on before, resort itself, etc.
+    comment: models.CharField = models.CharField(
+        max_length=LARGE_STR_SIZE, null=False, blank=False
+    )
+
+    def __str__(self) -> str:
+        return (
+            "SlopeUpdate:  slope: %s, type: %s, status: %s, effective_date: %s, created_at: %s"
+            % (self.slope, self.type, self.status, self.effective_date, self.created_at)
+        )
