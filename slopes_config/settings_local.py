@@ -1,6 +1,6 @@
 from slopes_config.settings import *
 
-DEBUG = True
+DEBUG = False
 
 DATABASES = {
     "default": {

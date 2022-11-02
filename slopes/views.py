@@ -61,3 +61,6 @@ def unused_test_view(request: HttpRequest) -> HttpResponse:
         "latest_slope_update_list": latest_slope_update_list,
     }
     return HttpResponse(template.render(context, request))
+
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)
