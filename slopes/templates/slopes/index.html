@@ -1,0 +1,9 @@
+{% if latest_slope_update_list %}
+    <ul>
+        {% for slope_update in latest_slope_update_list %}
+            <li><a href="/slope/{{ slope_update.slope.id }}">{{ slope_update }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No slopes are available.</p>
+{% endif %}
