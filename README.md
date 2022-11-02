@@ -1,2 +1,6 @@
-pip3 install -r requirements.txt
+# Slopes
+
+##  Useful Commands 
+
+`pip3 install -r requirements.txt`
 
