@@ -5,9 +5,13 @@ from django.db import models
 
 
 # this is an abstract model, just no idea how to attach ABC to it cuz causes metaclass conflicts
-class DateModel:
+class DateModel(models.Model):
     created_at: models.DateTimeField = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+        get_latest_by = ["created_at"]
 
 
 class SlopesEnum(Enum):
