@@ -18,6 +18,9 @@
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/3.3/examples/starter-template/starter-template.css" rel="stylesheet">
 
+    <!-- sortable tables -->
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
@@ -53,33 +56,35 @@
 <div class="container">
     <div class="starter-template" style="text-align: left;">
         <h3>Dates and Conditions &ndash; Updates:</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Slope</th>
-                <th scope="col">Update</th>
-                <th scope="col">Date</th>
-                <th scope="col">Last Checked</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for slope_update in latest_updates_for_each_slope %}
+        {#        <div class="table-responsive">#}
+        <div>
+            <table class="table table-striped table-hover" id="mainTable">
+                <thead>
                 <tr>
-                    <td><a href="/slope/{{ slope_update.slope.id }}">{{ slope_update.slope.name }}</a></td>
-                    <td>
-                        {{ slope_update.type }} ({{ slope_update.status }})
-                    </td>
-                    <td>
-                        {{ slope_update.effective_date }}
-                    </td>
-                    <td>
-                        {{ slope_update.created_at }}
-                    </td>
+                    <th scope="col">Slope</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Last Checked</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
+                </thead>
+                <tbody>
+                {% for slope_update in latest_updates_for_each_slope %}
+                    <tr>
+                        <td><a href="/slope/{{ slope_update.slope.id }}">{{ slope_update.slope.name }}</a></td>
+                        <td>
+                            {{ slope_update.type }} ({{ slope_update.status }})
+                        </td>
+                        <td>
+                            {{ slope_update.effective_date }}
+                        </td>
+                        <td>
+                            {{ slope_update.created_at }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
         <br><br>
         <h3 id="about">About</h3>
         <p class="lead">Latest snow reports and ski resort opening dates.
@@ -88,7 +93,7 @@
             skiing and snowboarding resorts and hills on the West Coast, from
             Los Angeles to Lake Tahoe to Mount Hood ski and snowboarding areas in Oregon,
             up to the skiing spots Washington State.</p>
-        <p>
+        <p class="lead">
             <b>Stay Tuned!</b> Coming up soon: road closures in Tahoe and elsewhere around
             the West Coast ski areas, snow reports and the latest condition updates.
         </p>
@@ -108,5 +113,22 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+<!-- sortable tables -->
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // December 2, 2022
+        {#DataTable.datetime('D MMM YYYY');#}
+        DataTable.datetime('MMMM D, YYYY');
+        $('#mainTable').DataTable({
+                paging: false,
+                ordering: true,
+                info: false,
+                searching: false,
+            }
+        );
+    });</script>
 </body>
 </html>

@@ -20,7 +20,10 @@ def index(request: HttpRequest) -> HttpResponse:
             "%B %-d, %Y"
         )
         latest_update_dict["status"] = latest_update.status.replace("_", "").title()
-        latest_update_dict["created_at"] = latest_update.created_at.strftime("%m/%d/%y")
+        # latest_update_dict["created_at"] = latest_update.created_at.strftime("%m/%d/%y")
+        latest_update_dict["created_at"] = latest_update.created_at.strftime(
+            "%B %-d, %Y"
+        )
         latest_updates_for_each_slope.append(latest_update_dict)
     context = {
         "current_year": timezone.now().strftime("%Y"),
