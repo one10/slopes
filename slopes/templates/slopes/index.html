@@ -49,7 +49,7 @@
 
 <div class="container">
     <div class="starter-template" style="text-align: left;">
-        <h1>Dates and Conditions</h1>
+        <h4>Dates and Condition &ndash; Updates</h4>
         <table class="table">
             <thead>
             <tr>
@@ -59,23 +59,21 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-            </tr>
+            {% for slope_update in latest_updates_for_each_slope %}
+                <tr>
+                    <td><a href="/slope/{{ slope_update.slope.id }}">{{ slope_update.slope.name }}</a></td>
+                    <td>
+                        {{ slope_update.effective_date }} ({{ slope_update.type }}, {{ slope_update.status }})
+                    </td>
+                    <td>
+                        {{ slope_update.created_at }}
+                    </td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
+
+
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
             mostly barebones HTML document.</p>
