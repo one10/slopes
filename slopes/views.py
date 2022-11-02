@@ -10,7 +10,7 @@ from slopes.utils_standalone import (slope_name_to_url_str,
 
 
 def _get_latest_updates_for_a_slope(slope_item: Slope) -> Dict:
-    latest_update = SlopeUpdate.objects.filter(slope_id=slope_item.id).latest()
+    latest_update = SlopeUpdate.objects.filter(slope_id=slope_item.pk).latest()
     latest_update_dict = {}
     latest_update_dict["slope"] = latest_update.slope
     latest_update_dict["type"] = latest_update.type.replace("_", " ").title()
