@@ -131,3 +131,4 @@ dmypy.json
 # intellij
 .idea/
 slopes.iml
+*.sqlite3

@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from slopes.models import Slope, SlopeUpdate
+
+admin.site.register(Slope)
+admin.site.register(SlopeUpdate)
