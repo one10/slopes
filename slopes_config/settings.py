@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'slopes.urls'
+ROOT_URLCONF = 'slopes_config.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'slopes.wsgi.application'
+WSGI_APPLICATION = 'slopes_config.wsgi.application'
 
 
 # Database
