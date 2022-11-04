@@ -62,5 +62,6 @@ def unused_test_view(request: HttpRequest) -> HttpResponse:
     }
     return HttpResponse(template.render(context, request))
 
-def page_not_found_view(request, exception):
-    return render(request, '404.html', status=404)
+
+def page_not_found_view(request: HttpRequest, exception: Exception) -> HttpResponse:
+    return render(request, "404.html", status=404)
