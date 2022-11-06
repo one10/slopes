@@ -3,7 +3,7 @@
 rm *zip
 temp_dir=`mktemp -d`
 
-mv .git .gitignore .idea db00.sqlite3 venv $temp_dir
+mv .git .gitignore .idea venv $temp_dir
 
 find . -name .mypy_cache | xargs rm -rf
 
