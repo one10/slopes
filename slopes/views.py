@@ -22,7 +22,7 @@ def _get_latest_updates_for_a_slope(slope_item: Slope) -> Dict:
     latest_update_dict["slope_url"] = slope_name_to_url_str(latest_update.slope.name)
     latest_update_dict["status"] = latest_update.status.replace("_", "").title()
     # latest_update_dict["created_at"] = latest_update.created_at.strftime("%m/%d/%y")
-    latest_update_dict["created_at"] = latest_update.created_at.strftime("%B %-d, %Y")
+    latest_update_dict["created_at"] = latest_update.created_at.strftime("%b %-d, %Y")
     return latest_update_dict
 
 
