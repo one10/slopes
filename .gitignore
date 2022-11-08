@@ -132,3 +132,8 @@ dmypy.json
 .idea/
 slopes.iml
 *.sqlite3
+
+# my misc
+.DS_Store
+db.sqlite3_og
+*.zip

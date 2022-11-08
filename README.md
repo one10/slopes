@@ -1,3 +1,4 @@
+
 # Slopes
 
 ## Useful Commands
@@ -17,3 +18,5 @@
 ### One-Time
 
 `python3 manage.py createsuperuser --settings=slopes_config.settings_local`
+
+`python3 manage.py collectstatic --settings=slopes_config.settings_local`
