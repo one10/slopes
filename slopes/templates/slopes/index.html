@@ -39,9 +39,11 @@
     <ul>
         {% for topic in latest_topics %}
             <li>
-                {{ topic.title }},
-                {{ topic.url }},
-                {{ topic.date }},
+                <a href="{{ topic.url }}">{{ topic.title }}</a> &ndash;
+                {{ topic.date }}
+                {%  if topic.img_url %}
+                    <img src="{{ topic.img_url }}" height="16">
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
