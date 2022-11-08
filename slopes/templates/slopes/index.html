@@ -38,7 +38,7 @@
     <br>
     <ul>
         {% for topic in latest_topics %}
-            <li>
+            <li style="padding-bottom: 10px;">
                 <a href="{{ topic.url }}">{{ topic.title }}</a> &ndash;
                 {{ topic.date }}
                 {%  if topic.img_url %}
