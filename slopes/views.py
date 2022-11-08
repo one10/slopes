@@ -1,13 +1,40 @@
+import datetime
 import re
-from typing import Dict
+from typing import Dict, List
 
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.template import loader
+from requests import get
+from rss_parser import Parser  # type: ignore
 
 from slopes.models import Slope, SlopeUpdate
 from slopes.utils_standalone import (slope_name_to_url_str,
                                      slope_url_str_to_name)
+
+
+def _get_latest_topics() -> List:
+    # rss_url = "https://forum.westcoastslopes.com/latest.rss"
+    rss_url = "https://forum.westcoastslopes.com/posts.rss"
+    xml = get(rss_url)
+    parser = Parser(xml=xml.content, limit=30)
+    feed = parser.parse()
+    # print(item.title)
+    # print(item.description)
+    result = []
+    for item in feed.feed:
+        # img_url = item.description_images[0].source
+        result.append(
+            {
+                "url": item.link,
+                "title": item.title,
+                "body": item.description,
+                "date": datetime.datetime.strptime(
+                    item.publish_date, "%a, %d %b %Y %H:%M:%S %z"
+                ).strftime("%b %-d, '%y"),
+            }
+        )
+    return result
 
 
 def _get_latest_updates_for_a_slope(slope_item: Slope) -> Dict:
@@ -42,6 +69,7 @@ def index(request: HttpRequest) -> HttpResponse:
     context = {
         "slope_list": slope_list,
         "latest_updates_for_each_slope": latest_updates_for_each_slope,
+        "latest_topics": _get_latest_topics(),
     }
     return render(request, "slopes/index.html", context)
 
