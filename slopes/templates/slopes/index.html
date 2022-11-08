@@ -20,7 +20,7 @@
             <tbody>
             {% for slope_update in latest_updates_for_each_slope %}
                 <tr>
-                    <td><a href="/slope/{{ slope_update.slope_url }}">{{ slope_update.slope.name }}</a></td>
+                    <td><a href="/slope/{{ slope_update.slope_url }}">{{ slope_update.slope_name }}</a></td>
                     <td>
                         {{ slope_update.type }} ({{ slope_update.status }})
                     </td>
@@ -60,7 +60,7 @@ West Coast Slopes was created by the three ski buddies &ndash; Nick, John and Mi
         $(document).ready(function () {
             // December 2, 2022
             {#DataTable.datetime('D MMM YYYY');#}
-            DataTable.datetime('MMM D, YYYY');
+            DataTable.datetime("MMM D, 'YY");
             $('#mainTable').DataTable({
                     paging: false,
                     ordering: true,
