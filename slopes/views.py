@@ -32,7 +32,7 @@ def _get_latest_topics() -> List:
                 "body": item.description,
                 "date": datetime.datetime.strptime(
                     item.publish_date, "%a, %d %b %Y %H:%M:%S %z"
-                ).strftime("%b %-d, '%y"),
+                ).strftime("%b %-d '%y"),
                 "img_url": img_url,
             }
         )
@@ -46,13 +46,13 @@ def _get_latest_updates_for_a_slope(slope_item: Slope) -> Dict:
     latest_update_dict["slope_name"] = re.sub(r" .*", "", latest_update.slope.name)
     latest_update_dict["type"] = latest_update.type.replace("SEASON_", " ").title()
     latest_update_dict["effective_date"] = latest_update.effective_date.strftime(
-        "%b %-d, '%y"
+        "%b %-d '%y"
     )
     latest_update_dict["slope_url"] = slope_name_to_url_str(latest_update.slope.name)
     latest_update_dict["status"] = latest_update.status.replace(
         "APPROXIMATE", "Est."
     ).title()
-    latest_update_dict["created_at"] = latest_update.created_at.strftime("%b %-d, '%y")
+    latest_update_dict["created_at"] = latest_update.created_at.strftime("%b %-d '%y")
     return latest_update_dict
 
 

@@ -14,7 +14,7 @@
                 <th scope="col">Slope</th>
                 <th scope="col">Update</th>
                 <th scope="col">Date</th>
-                <th scope="col">Checked</th>
+{#                <th scope="col">Checked</th>#}
             </tr>
             </thead>
             <tbody>
@@ -27,9 +27,9 @@
                     <td>
                         {{ slope_update.effective_date }}
                     </td>
-                    <td>
-                        {{ slope_update.created_at }}
-                    </td>
+{#                    <td>#}
+{#                        {{ slope_update.created_at }}#}
+{#                    </td>#}
                 </tr>
             {% endfor %}
             </tbody>
@@ -38,7 +38,7 @@
     <br>
     <ul>
         {% for topic in latest_topics %}
-            <li style="padding-bottom: 10px;">
+            <li style="padding-bottom: 10px;margin-left: -15px;">
                 <a href="{{ topic.url }}">{{ topic.title }}</a> &ndash;
                 {{ topic.date }}
                 {%  if topic.img_url %}
