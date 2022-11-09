@@ -22,9 +22,14 @@
                 <tr>
                     <td><a href="/slope/{{ slope_update.slope_url }}">{{ slope_update.slope_name }}</a></td>
                     <td>
-                        {{ slope_update.type }} ({{ slope_update.status }})
+                        {{ slope_update.type }}
+
+                        {% if slope_update.status != 'Confirmed' %}
+                            ({{ slope_update.status }})
+                        {% endif %}
+
                     </td>
-                    <td>
+                    <td style="white-space: nowrap;">
                         {{ slope_update.effective_date }}
                     </td>
 {#                    <td>#}
@@ -38,7 +43,7 @@
     <br>
     <ul>
         {% for topic in latest_topics %}
-            <li style="padding-bottom: 10px;margin-left: -15px;">
+            <li style="padding-bottom: 10px;margin-left: -25px;">
                 <a href="{{ topic.url }}">{{ topic.title }}</a> &ndash;
                 {{ topic.date }}
                 {%  if topic.img_url %}
@@ -73,7 +78,7 @@
         $(document).ready(function () {
             // December 2, 2022
             {#DataTable.datetime('D MMM YYYY');#}
-            DataTable.datetime("MMM D, 'YY");
+            DataTable.datetime("MMM D 'YY");
             $('#mainTable').DataTable({
                     paging: false,
                     ordering: true,
